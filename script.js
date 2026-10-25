@@ -121,7 +121,7 @@ addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()===
 
 // ---- Pro layer ----
 (()=>{const $=s=>document.querySelector(s),RM=matchMedia('(prefers-reduced-motion:reduce)').matches,FP=matchMedia('(hover:hover) and (pointer:fine)').matches,root=document.documentElement;
-$('#theme').onclick=()=>{const t=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=t;try{localStorage.setItem('t',t)}catch(e){}};
+$('#theme').onclick=()=>{const mode=root.dataset.mode||'auto';window.__setAppearanceMode(mode==='dark'?'light':mode==='light'?'auto':'dark')};
 // modal prev/next
 $('#mBody').addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b)window.openProj((window.__cur+ +b.dataset.d+3)%3)});
 addEventListener('keydown',e=>{if($('#modal').hidden||(e.key!=='ArrowLeft'&&e.key!=='ArrowRight'))return;window.openProj((window.__cur+(e.key==='ArrowRight'?1:-1)+3)%3)});
